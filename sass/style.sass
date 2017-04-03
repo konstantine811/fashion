@@ -1,0 +1,375 @@
+$width: 100
+$gutter: 10
+$columns: 12
+
+
+//Varible
+$silver: #5d5c5c
+@import "fonts.sass"
+
+// reset option
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+body
+	font-family: RobotoRegular, Arial, Helvetica, sans-serif
+	color: #000
+
+article, aside, details, figcaption, figure, footer, header, menu,
+nav, section
+	display: block
+
+img
+	max-width: 100%
+	height: auto
+
+
+.container::before, .container::after,
+.row::before, .row::after,
+.clear::before, .clear::after
+	content: " "
+	display: table
+	
+.container::before, .container::after,
+.row::before, .row::after
+.clear::after
+	clear: both
+		
+
+// loop for responsive design
+
+.container
+	margin-left: auto
+	margin-right: auto
+	padding-left: $gutter + px
+	padding-right: $gutter + px
+	.row
+		margin-left: -$gutter + px
+		margin-right: -$gutter + px
+		&>[class*="col-"]
+			position: relative
+			min-height: 1px
+			float: left
+			padding-left: $gutter + px
+			padding-right: $gutter + px
+
+@for $i from 1 through $columns
+	.col-#{$i}
+		width: (($width/ $columns) * $i) * 1%
+
+
+
+//Start
+//
+.content
+	width: 100%
+	height: 100%
+	overflow: hidden
+	background-color: white
+	z-index: 12
+
+.content article
+	padding: 80px 0
+	max-width: 80%
+	margin: 0 auto
+	text-align: center
+	>p
+		font-size: 1.2em
+		padding: 5% 0
+		border-bottom: 2px solid $silver
+
+
+.content .textStore
+	text-align: center
+	font-size: 200%
+	font-family: RobotoRegular
+	word-spacing: 30%
+	text-transform: uppercase
+	letter-spacing: 0.3em
+	color: $silver
+	padding: 6% 0
+	border-bottom: 2px solid $silver
+
+//Paralax
+
+.bird-box
+	position: relative
+	background-image: url('../img/tumblr_static_ominous.jpg')
+	background-repeat: no-repeat
+	background-size: cover
+	background-attachment: fixed
+	overflow: hidden
+
+.logo
+	text-align: center
+	position: relative
+	top: 200px
+	text-transform: uppercase
+	>h1
+		font-size: 3.1em
+		&:after, &:before
+			content: ''
+			border-bottom: 3px solid black
+			position: absolute
+			width: 100px
+			animation: trans 5s cubic-bezier(.1,1.17,.57,1) 1
+		&:before
+			margin: 38px -110px
+
+		&:after
+			margin: 38px 10px
+	>h2
+		font-family: Lao
+		font-size: 6em
+
+@keyframes trans
+	0%
+		transform: scale(0)
+	100%
+		transform: scale(1)
+
+.fore-bird
+	background-image: url('../img/ravenOne.png')
+	width: 252px
+	height: 297px
+	position: absolute
+	left: 77%
+	top: 80%
+
+.back-bird
+	background-image: url('../img/ravenTwo.png')
+	width: 333px
+	height: 126px
+	top: 167px
+	position: relative
+
+
+.clothes
+	width: 100%
+	height: 100%
+	margin: 0 auto
+	overflow: hidden
+	background-color: white
+	z-index: 12
+	padding: 4% 0
+	.container
+		text-align: center
+		width: 80%
+		.clothes-row
+			padding: 1% 0
+			overflow: hidden
+			height: 80%
+			width: 80%
+			margin: 0 auto
+			transition: all 0.8s ease-in-out
+			&:hover
+				box-shadow: 2px 2px 1px 1px rgba(0,0,0, 0.8)
+		.clothes-row img
+			padding: 10px 0
+			overflow: hidden
+			border-radius: 5px
+			display: inline-block
+			transition: 0.6s ease-in-out
+			cursor: pointer
+			opacity: 0
+			transform: translate(-30px) scale(1)
+			transition: all 0.9s cubic-bezier(.24,-0.97,.27,1.55)
+
+			&.is-showing
+				opacity: 1
+				transform: translate(0px)
+		.clothes-row:hover
+			figcaption
+				left: 12%
+				opacity: 1
+		.clothes-row img:hover
+				transform: scale(1.2)
+		figcaption
+			position: absolute
+			bottom: 10px
+			left: -100%
+			opacity: 0
+			background: black
+			color: white
+			padding: 1% 1%
+			font-size: 0.9em
+			font-family: Roboto
+			transition: all 0.9s cubic-bezier(.86,0,.07,1)
+
+.window
+	width: 100%
+	height: 100%
+	overflow: hidden
+	background-color: white
+	z-index: 12
+.large-window
+	bottom: 80px
+	position: relative
+	margin: 0 auto
+	width: 600px
+	height: 600px
+	background:
+		image: url('../img/clothes/main2.jpg')
+		position: center 0px
+		size: 50%
+		attachment: fixed
+	margin-top: 100px
+	border-radius: 50%
+	.window-tint
+		background-color: rgba(0,0,0, 0.5)
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		border-radius: 50%
+		display: flex
+		justify-content: center
+		align-items: center
+		text-align: center
+		.promo-text
+			color: white
+			font-size: 3em
+			font-family: Roboto
+			line-height: 1.5
+			strong
+				display: block
+				font-family: Helvetica
+				font-size: bold
+				font-size: 0.5em
+				text-align: center
+				span
+					font:
+						weight: 300
+						style: italic
+						size: 0.7em
+					color: rgba(255, 255, 255, 0.6)
+			.window-cta
+				font-size: 0.6em
+				text-decoration: none
+				color: white
+				border: 1px solid white
+				padding: 10px 10px
+				transition: all 0.3s ease-in-out
+				&:hover
+					background: white
+					color: black
+
+.content .bottom-text
+	padding: 0 0
+	position: relative
+	bottom: 61px
+
+.blog-posts
+	width: 100%
+	height: 100%
+	overflow: hidden
+	background-color: white
+	z-index: 12
+	margin-bottom: 30%
+	padding-bottom: 5%
+	.offset
+		margin-left: 12%
+	.col-3
+		
+	.img-post
+		height: 100%
+		overflow: hidden
+		img
+			position: relative
+			bottom: 50%
+	h5
+		text-align: center
+		font-size: 1.5em
+		padding: 5% 0
+		color: $silver
+	p
+		text-align: center
+	.button
+			text-transform: uppercase
+			text-decoration: none
+			color: $silver
+			border: 1px solid rgba(0,0,0, 0.3)
+			padding: 3% 3%
+			display: block
+			border-radius: 4%
+			width: 49%
+			font-size: 0.7em
+			margin: 8% auto
+			text-align: center
+			box-shadow: 1px 1px 1px 1px rgba(0,0,0, 0.4)
+			transition: all 0.5s ease-in-out
+			&:hover
+				background-color: rgba(0,0,0, 0.6)
+				color: rgba(255,255,255, 0.6)
+.post
+	box-shadow: 10px 10px 10px 10px #e1e1e1
+	padding: 4% 4% 0
+	background: white
+	position: relative
+	padding-bottom: 1%
+.post-1
+	position: relative
+	right: 10%
+.post-3
+	position: relative
+	left: 10%
+
+footer
+	background: black
+	color: white
+	height: 300px
+	width: 100%
+	margin: 0 auto
+	text-align: center
+	padding: 7% 0
+	bottom: 0
+	position: fixed
+	z-index: -2
+	.container
+		max-width: 80%
+	ul
+		list-style-type: none
+		a
+			text-decoration: none
+			color: $silver
+	strong
+		font-size: 1.5em
+		display: block
+	input
+		background: none
+		border: none
+	input[type="email"]
+		border-bottom: 1px solid white
+		text-decoration: none
+		color: white
+		outline: 0
+		box-shadow: none
+		appearence: none
+		font-size: 1.5em
+		&:focus
+			outline: 0
+			box-shadow: none
+			appearence: none
+	button
+		background: none
+		border: 1px solid white
+		color: white
+		cursor: pointer
+		padding: 2% 5%
+		font-size: 1em
+		text-transform: uppercase
+		margin: 5% 5%
+		bottom: 10px
+		position: relative
+		transition: all 0.9s cubic-bezier(.86,0,.07,1)
+		&:hover
+			background: white
+			color: black
+
+section
+	background-color: white
+	z-index: 12
